@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -25,30 +26,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     private RadioGroup group;
+
     private RadioButton mainRadio;
+
     private RadioButton shotRadio;
+
     private RadioButton albumRadio;
+
     private RadioButton aboutMeRadio;
 
     private Fragment mainFragment;
-    private Fragment shootFragment;
-    private Fragment albumFragment;
-    private Fragment aboutMeFragment;
 
     static final int REQUEST_VIDEO_CAPTURE = 1;
 
     //读写权限
     private static String[] PERMISSIONS = {
             Manifest.permission.CAMERA,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ,Manifest.permission.RECORD_AUDIO};
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO};
     //请求状态码
     private static final int REQUEST_PERMISSION_CODE = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); //状态栏隐藏
+        getSupportActionBar().hide(); //标题栏隐藏
         setContentView(R.layout.main_activity_view);
         group=findViewById(R.id.radio_group);
         mainRadio=findViewById(R.id.recycle_radio);

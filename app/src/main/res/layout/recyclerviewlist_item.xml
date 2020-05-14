@@ -1,50 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_height="250dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_height="match_parent" />
+    <!--    android:background="@drawable/boman_selector"-->
 
     <LinearLayout
+        android:id="@+id/ll_moban"
         android:layout_width="match_parent"
-        android:layout_height="412dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/rl_text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="377dp"
-                tools:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/imagePlayer"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_centerInParent="true"
-                app:srcCompat="@drawable/ic_action_play"
-                tools:visibility="visible" />
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/author_text"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:layout_alignParentLeft="true"/>
+                android:layout_centerInParent="true"
+                android:layout_marginTop="28dp"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/time_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:layout_alignParentBottom="true"/>
+                android:layout_below="@id/author_text"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:textColor="@color/colorWhite" />
+
+            <!--            android:layout_below="@id/time_text"-->
+            <ImageView
+                android:id="@+id/imagePlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/author_text"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_action_play" />
+
 
         </RelativeLayout>
-
 
     </LinearLayout>
 </FrameLayout>
