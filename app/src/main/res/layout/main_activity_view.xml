@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/content_view" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/radio_group">
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/radiobutton_style"
+            android:id="@+id/recycle_radio"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_play_video_on"
+            android:checked="true"
+            android:gravity="center"
+            android:text="首页"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/radiobutton_style"
+            android:id="@+id/shot_radio"
+            android:drawableTop="@drawable/ic_shot_video_off"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="拍摄"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/radiobutton_style"
+            android:id="@+id/show_video_radio"
+            android:drawableTop="@drawable/ic_album_off"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="相册"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/radiobutton_style"
+            android:id="@+id/about_me_radio"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_about_me_off"
+            android:text="我的"/>
+    </RadioGroup>
+
+</LinearLayout>
