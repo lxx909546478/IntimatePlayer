@@ -18,7 +18,6 @@ public class ResourcePlayer {
         this.ijkPlayer=ijkPlayer;
         this.resource=resource;
         isPlay=true;
-        play();
 
         try {
             IjkMediaPlayer.loadLibrariesOnce(null);
@@ -27,10 +26,12 @@ public class ResourcePlayer {
             e.printStackTrace();
         }
 
-        ijkPlayer.setListener(new VideoPlayerListener());
+//        ijkPlayer.setListener(new VideoPlayerListener());
         ijkPlayer.getMeasuredWidth();
+        ijkPlayer.getMeasuredHeight();
         ijkPlayer.setVideoPath(resource);
 
+        play();
         ijkPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,15 +1,18 @@
 package com.example.recyclerviewplayer.recyclerview.player;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.res.AssetFileDescriptor;
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import java.io.IOException;
 
@@ -32,7 +35,10 @@ public class VideoPlayerIJK extends FrameLayout {
     private SurfaceView surfaceView;
 
     private VideoPlayerListener listener;
+
     private Context mContext;
+
+    private static final String TEG="LXX";
 
     public VideoPlayerIJK(@NonNull Context context) {
         super(context);
@@ -82,11 +88,14 @@ public class VideoPlayerIJK extends FrameLayout {
         //生成一个新的surface view
         surfaceView = new SurfaceView(mContext);
         surfaceView.getHolder().addCallback(new PlayerSurfaceCallback());
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
-                , ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT
+                , RelativeLayout.LayoutParams.MATCH_PARENT);
         surfaceView.setLayoutParams(layoutParams);
-        this.addView(surfaceView);
+        addView(surfaceView);
         hasCreateSurfaceView = true;
+        int height=surfaceView.getHeight();
+        Log.d("LXX",String.valueOf(height));
+        setListener(new VideoPlayerListener(surfaceView));
     }
 
     /**
@@ -103,7 +112,6 @@ public class VideoPlayerIJK extends FrameLayout {
 
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
         }
 
         @Override

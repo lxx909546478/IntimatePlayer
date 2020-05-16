@@ -28,15 +28,6 @@ public class ViewPagerActivity extends AppCompatActivity {
         int initPos=intent.getIntExtra("initPos",0);
         ViewPagerAdapter adapter=new ViewPagerAdapter(initPos);
         viewPager2.setAdapter(adapter);
-//        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                super.onPageSelected(position);
-//                VideoPlayerIJK player=viewPager2.getChildAt(0).findViewById(R.id.ijk_player_view);
-//                player.pause();
-//                Log.d("LXX",String.valueOf(viewPager2.getId()));
-//            }
-//        });
     }
 
     @Override

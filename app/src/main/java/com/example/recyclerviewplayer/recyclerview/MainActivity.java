@@ -26,26 +26,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     private RadioGroup group;
-
     private RadioButton mainRadio;
-
     private RadioButton shotRadio;
-
     private RadioButton albumRadio;
-
     private RadioButton aboutMeRadio;
 
     private Fragment mainFragment;
+    private Fragment shootFragment;
+    private Fragment albumFragment;
+    private Fragment aboutMeFragment;
 
     static final int REQUEST_VIDEO_CAPTURE = 1;
 
     //读写权限
     private static String[] PERMISSIONS = {
             Manifest.permission.CAMERA,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.RECORD_AUDIO};
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ,Manifest.permission.RECORD_AUDIO};
     //请求状态码
     private static final int REQUEST_PERMISSION_CODE = 1;
 
@@ -79,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                         checkPermission();
                         break;
                     case R.id.show_video_radio:
+                        Intent intent=new Intent(group.getContext(), RecyclerLocalActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.about_me_radio:
                         break;

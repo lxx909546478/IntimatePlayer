@@ -31,6 +31,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".recyclerview.ViewPagerActivity" />
+        <activity android:name=".recyclerview.LocalVideoActivity"/>
+        <activity android:name=".recyclerview.RecyclerLocalActivity"/>
     </application>
 
 </manifest>
