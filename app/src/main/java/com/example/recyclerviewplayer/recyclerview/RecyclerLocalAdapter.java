@@ -17,7 +17,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.recyclerviewplayer.R;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class RecyclerLocalAdapter extends RecyclerView.Adapter<RecyclerLocalAdap
     @Override
     public NumberViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
-        int layoutIdForListItem = R.layout.recyclerviewlistlocal_item;
+        int layoutIdForListItem = R.layout.recycler_local_item;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 

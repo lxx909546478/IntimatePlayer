@@ -1,17 +1,18 @@
 package com.example.recyclerviewplayer.recyclerview;
-
-import android.util.Log;
-import android.view.ActionProvider;
 import android.view.View;
 
 import com.example.recyclerviewplayer.recyclerview.player.VideoPlayerIJK;
-import com.example.recyclerviewplayer.recyclerview.player.VideoPlayerListener;
 
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 public class ResourcePlayer {
+
+    private static final String TEG="LXX";
+
     private VideoPlayerIJK ijkPlayer;
+
     private String resource;
+
     private static boolean isPlay;
 
     public ResourcePlayer(VideoPlayerIJK ijkPlayer, String resource){

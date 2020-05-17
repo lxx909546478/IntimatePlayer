@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,21 +19,26 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.recyclerviewplayer.R;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TEG="LXX";
+
     private RadioGroup group;
+
     private RadioButton mainRadio;
+
     private RadioButton shotRadio;
+
     private RadioButton albumRadio;
+
     private RadioButton aboutMeRadio;
 
     private Fragment mainFragment;
-    private Fragment shootFragment;
-    private Fragment albumFragment;
+
     private Fragment aboutMeFragment;
 
     static final int REQUEST_VIDEO_CAPTURE = 1;
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //状态栏隐藏
         getSupportActionBar().hide(); //标题栏隐藏
-        setContentView(R.layout.main_activity_view);
+        setContentView(R.layout.activity_main_view);
         group=findViewById(R.id.radio_group);
         mainRadio=findViewById(R.id.recycle_radio);
         shotRadio=findViewById(R.id.shot_radio);
@@ -81,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.about_me_radio:
+                        if(aboutMeFragment==null){
+                            aboutMeFragment=new AboutMeFragment();
+                        }
+                        fragmentTransaction.replace(R.id.content_view,aboutMeFragment);
                         break;
                 }
                 setRadioState();

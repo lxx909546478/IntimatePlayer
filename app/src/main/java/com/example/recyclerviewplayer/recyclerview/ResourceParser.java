@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ResourceParser {
 
+    private static final String TEG="LXX";
     //资源结构
     //id（String）：标识
     //feedurl（String）：视频资源URI

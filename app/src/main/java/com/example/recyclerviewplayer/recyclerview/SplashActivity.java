@@ -10,6 +10,8 @@ import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private static final String TEG="zhongjian";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -15,7 +15,9 @@ import com.example.recyclerviewplayer.recyclerview.player.VideoPlayerIJK;
 public class ViewPagerActivity extends AppCompatActivity {
 
     private static final String TEG="LXX";
+
     ViewPager2 viewPager2;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
