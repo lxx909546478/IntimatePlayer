@@ -5,6 +5,13 @@ import com.example.recyclerviewplayer.recyclerview.player.VideoPlayerIJK;
 
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
+/**
+ *  viewPager2界面中的资源播放器
+ *
+ *  创建人：刘兴贤
+ *  最后修改时间：2020.5.28
+ */
+
 public class ResourcePlayer {
 
     private static final String TEG="LXX";

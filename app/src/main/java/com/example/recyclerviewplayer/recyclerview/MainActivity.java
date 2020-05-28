@@ -22,7 +22,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.recyclerviewplayer.R;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *  主界面
+ *
+ *  创建人：刘兴贤
+ *  最后修改时间：2020.5.28
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TEG="LXX";
@@ -71,19 +76,23 @@ public class MainActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 switch (checkedId){
+                        //视频封面选择界面
                     case R.id.recycle_radio:
                         if (mainFragment==null){
                             mainFragment=new RecyclerFragment();
                         }
                         fragmentTransaction.replace(R.id.content_view,mainFragment);
                         break;
+                        //拍摄视频界面
                     case R.id.shot_radio:
                         checkPermission();
                         break;
+                        //播放本地视频界面
                     case R.id.show_video_radio:
                         Intent intent=new Intent(group.getContext(), RecyclerLocalActivity.class);
                         startActivity(intent);
                         break;
+                        //“我的”界面
                     case R.id.about_me_radio:
                         if(aboutMeFragment==null){
                             aboutMeFragment=new AboutMeFragment();
@@ -98,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setRadioState(){
+        //选中时切换图标
         if (mainRadio.isChecked()){
             mainRadio.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     null,getDrawable(R.drawable.ic_play_video_on),null,null);
@@ -147,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkPermission(){
+        //检查相机权限
         boolean isGotPermission=true;
         for(String permission :PERMISSIONS){
             if(ContextCompat.checkSelfPermission(this,permission) != PackageManager.PERMISSION_GRANTED){
@@ -154,13 +165,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }
+        //获得权限后调用摄像头
         if(isGotPermission){
             dispatchTakeVideoIntent();
         }else{
             requestForPermission();
         }
     }
-
+    //授权方式在 M 版本前后有重大改变
     @TargetApi(Build.VERSION_CODES.M)
     private void requestForPermission(){
         List<String> p = new ArrayList<>();

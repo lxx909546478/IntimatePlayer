@@ -7,6 +7,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  资源解析器
+ *
+ *  创建人：刘兴贤
+ *  最后修改时间：2020.5.28
+ */
+
 public class ResourceParser {
 
     private static final String TEG="LXX";

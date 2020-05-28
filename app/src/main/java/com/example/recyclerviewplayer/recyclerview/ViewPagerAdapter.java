@@ -11,12 +11,16 @@ import com.example.recyclerviewplayer.R;
 
 import com.example.recyclerviewplayer.recyclerview.player.VideoPlayerIJK;
 
+/**
+ *  viewpager2的适配器
+ *
+ *  创建人：刘兴贤
+ *  最后修改时间：2020.5.28
+ */
 
 public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder> {
 
     private static final String TEG="LXX";
-
-    Context mContext;
 
     private int mNumberItems;
 
@@ -58,12 +62,14 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
 
     @Override
     public void onViewAttachedToWindow(@NonNull PagerViewHolder holder) {
+        //页面出现时开始播放
         super.onViewAttachedToWindow(holder);
         holder.ijkPlayer.start();
     }
 
     @Override
     public void onViewDetachedFromWindow(@NonNull PagerViewHolder holder) {
+        //页面消失时停止播放
         super.onViewDetachedFromWindow(holder);
         holder.ijkPlayer.pause();
     }

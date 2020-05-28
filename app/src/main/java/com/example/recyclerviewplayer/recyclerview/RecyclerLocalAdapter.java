@@ -22,8 +22,13 @@ import java.util.List;
 
 
 /**
- * 适配器
+ * 本地视频recyclerview的适配器，用来处理单个视频的显示状况
+ *
+ *  创建人：钟健
+ *  时间：2020.5.28
  */
+
+
 public class RecyclerLocalAdapter extends RecyclerView.Adapter<RecyclerLocalAdapter.NumberViewHolder> {
 
     private static final String TAG = "LXX";
@@ -74,13 +79,13 @@ public class RecyclerLocalAdapter extends RecyclerView.Adapter<RecyclerLocalAdap
 
         numberViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view){ //点击跳转
+            public void onClick(View view){ //设置点击事件：点击封面图片跳转到播放页面
 //                Intent intent = new Intent(context,VideoviewMainActivity.class);
                 Intent intent=new Intent(context, LocalVideoActivity.class);
 
-                intent.putExtra("videopath",mess.get(position));//传递第几个view
+                intent.putExtra("videopath",mess.get(position));//传递第几个view的视频地址信息
 
-                context.startActivity(intent);
+                context.startActivity(intent); //跳转至播放页面
             }
         });
 
@@ -111,7 +116,7 @@ public class RecyclerLocalAdapter extends RecyclerView.Adapter<RecyclerLocalAdap
 //            time_text.setText("描述"+mess.get(position).getString("description"));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             Log.d("LXX",mess.get(position));
-            Glide.with(imageView.getContext())
+            Glide.with(imageView.getContext()) //使用Glide加载封面图
                     .setDefaultRequestOptions(
                           new RequestOptions()
                                   .frame(1000000)

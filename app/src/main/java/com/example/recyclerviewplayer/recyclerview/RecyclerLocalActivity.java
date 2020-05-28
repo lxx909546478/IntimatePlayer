@@ -18,11 +18,20 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+    播放本地视频recyclerview主页面，定义了create方法，滚动事件的方法，遍历本地录像视频文件夹的所有视频内容信息传给Adapter，
+    并在此处申请了内存读写权限
+
+    创建人：钟健
+    时间：2020.5.28
+
+ **/
+
 public class RecyclerLocalActivity extends AppCompatActivity implements RecyclerLocalAdapter.ListItemClickListener{
 
     private static final String TAG = "zhongjian";
-    private RecyclerLocalAdapter mAdapter;
-    private RecyclerView mNumbersListView;
+    private RecyclerLocalAdapter mAdapter; //recyclerview的适应器
+    private RecyclerView mNumbersListView; //整个recyclerview页面对象
 
     private static int NUM_LIST_ITEMS;
 
@@ -35,17 +44,17 @@ public class RecyclerLocalActivity extends AppCompatActivity implements Recycler
         getSupportActionBar().hide(); //标题栏隐藏
         setContentView(R.layout.activity_recycler_local);
 
-        mNumbersListView = findViewById(R.id.RecyclerviewList);
+        mNumbersListView = findViewById(R.id.RecyclerviewList); //设置recyclerview页面对象的布局
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mNumbersListView.setLayoutManager(layoutManager);
         mNumbersListView.setHasFixedSize(true);
 
-        List<String> fileNameList = new ArrayList<>();//遍历文件夹
-        String cameraPath = "/storage/self/primary/DCIM/Camera/";
+        List<String> fileNameList = new ArrayList<>();//遍历本地视频文件的文件夹
+        String cameraPath = "/storage/self/primary/DCIM/Camera/"; //视频文件的地址
         File file = new File(cameraPath);
         File[] Subfile = file.listFiles();
-        String[] videoTail={".mp4",".avi",".wmv",".3gp",".mkv",".flv",".rmvb"};
+        String[] videoTail={".mp4",".avi",".wmv",".3gp",".mkv",".flv",".rmvb"}; //过滤掉图片文件保留视频文件
         for(int iFileLength = 0;iFileLength < Subfile.length;iFileLength++){
             if(!Subfile[iFileLength].isDirectory()){
                 boolean isVideo=false;
@@ -64,10 +73,10 @@ public class RecyclerLocalActivity extends AppCompatActivity implements Recycler
         NUM_LIST_ITEMS = fileNameList.size();
 
 
-        mAdapter = new RecyclerLocalAdapter(RecyclerLocalActivity.this,NUM_LIST_ITEMS, this,fileNameList);
+        mAdapter = new RecyclerLocalAdapter(RecyclerLocalActivity.this,NUM_LIST_ITEMS, this,fileNameList);//将必要信息传给适应器
 
         mNumbersListView.setAdapter(mAdapter);
-        mNumbersListView.addOnScrollListener(new RecyclerView.OnScrollListener() { //滑动事件
+        mNumbersListView.addOnScrollListener(new RecyclerView.OnScrollListener() { //滑动事件处理
 
             // 最后一个完全可见项的位置
             private int lastCompletelyVisibleItemPosition;
@@ -79,14 +88,14 @@ public class RecyclerLocalActivity extends AppCompatActivity implements Recycler
                 RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
                 int visibleItemCount = layoutManager.getChildCount();
                 int totalItemCount = layoutManager.getItemCount();
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) { //滑动到底部跳出提示
                     if (visibleItemCount > 0 && lastCompletelyVisibleItemPosition >= totalItemCount - 1) {
                         Toast.makeText(RecyclerLocalActivity.this, "已滑动到底部!,触发loadMore", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
             @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) { //滚动处理
                 super.onScrolled(recyclerView, dx, dy);
                 RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
                 if (layoutManager instanceof LinearLayoutManager) {
@@ -102,7 +111,7 @@ public class RecyclerLocalActivity extends AppCompatActivity implements Recycler
 
     }
 
-    protected void judgePermission() { //获取权限
+    protected void judgePermission() { //获取读写权限
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // 检查该权限是否已经获取

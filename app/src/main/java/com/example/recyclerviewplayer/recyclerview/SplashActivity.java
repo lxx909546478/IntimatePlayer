@@ -7,6 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+/**
+    app封面信息页，设置一个线程在五秒后跳转至主页面
+    创建人：钟健
+    时间：2020.5.28
+ **/
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -19,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //状态栏隐藏
         getSupportActionBar().hide(); //标题栏隐藏
         setContentView(R.layout.activity_splash);
-        Thread myThread = new Thread(){//创建子线程
+        Thread myThread = new Thread(){//创建子线程，五秒后跳转至主页面
             @Override
             public void run(){
                 try{

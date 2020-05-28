@@ -23,7 +23,9 @@ import org.json.JSONObject;
 
 
 /**
- * 适配器
+ * 网络视频recyclerview的适配器，用来处理单个视频的显示状况
+ * 创建人：钟健
+ * 时间：2020.5.28
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.NumberViewHolder> {
 
@@ -74,13 +76,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         numberViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view){ //点击跳转
+            public void onClick(View view){ //设置点击事件：点击封面图片跳转到播放页面
 //                Intent intent = new Intent(context,VideoviewMainActivity.class);
                 Intent intent=new Intent(context, ViewPagerActivity.class);
 
-                intent.putExtra("initPos",position);//传递第几个view
+                intent.putExtra("initPos",position);//传递第几个view的视频地址信息
 
-                context.startActivity(intent);
+                context.startActivity(intent);//跳转到播放界面
             }
         });
 
@@ -111,7 +113,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             time_text.setText("描述"+mess.get(position).getString("description"));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             Log.d("LXX",mess.get(position).getString("feedurl"));
-            Glide.with(imageView.getContext())
+            Glide.with(imageView.getContext()) //使用Glide加载封面图
                     .setDefaultRequestOptions(
                           new RequestOptions()
                                   .frame(1000000)
