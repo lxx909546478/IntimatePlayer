@@ -72,7 +72,6 @@ public class URIResponse {
     }
 
 
-
     @Override
     public String toString() {
         return "_id:"+_id+"\n"

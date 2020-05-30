@@ -24,7 +24,7 @@ import org.json.JSONObject;
 
 /**
  * 网络视频recyclerview的适配器，用来处理单个视频的显示状况
- * 创建人：钟健
+ * 创建人：钟健、刘兴贤
  * 时间：2020.5.28
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.NumberViewHolder> {

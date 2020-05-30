@@ -30,7 +30,9 @@ import java.util.List;
 public class RecyclerLocalActivity extends AppCompatActivity implements RecyclerLocalAdapter.ListItemClickListener{
 
     private static final String TAG = "zhongjian";
+
     private RecyclerLocalAdapter mAdapter; //recyclerview的适应器
+
     private RecyclerView mNumbersListView; //整个recyclerview页面对象
 
     private static int NUM_LIST_ITEMS;

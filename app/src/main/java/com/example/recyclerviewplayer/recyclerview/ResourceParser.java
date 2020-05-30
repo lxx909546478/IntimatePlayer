@@ -19,7 +19,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ResourceParser {
 
-    private static final String TEG="LXX";
     //资源结构
     //id（String）：标识
     //feedurl（String）：视频资源URI
@@ -27,6 +26,7 @@ public class ResourceParser {
     //description（String）:视频描述
     //likecount(Integer)：喜欢该视频的人数
     //avatar（String）:用户头像URI
+    private static final String TEG="LXX";
 
     //存储资源列表
     private static List<URIResponse> resourceList;

@@ -16,6 +16,7 @@ import android.widget.VideoView;
  **/
 
 public class LocalVideoActivity extends AppCompatActivity {
+
     private VideoView videoView;
 
     @Override
