@@ -17,6 +17,8 @@ public class SplashActivity extends AppCompatActivity {
 
     private static final String TEG="zhongjian";
 
+    ResourceParser parser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //状态栏隐藏
         getSupportActionBar().hide(); //标题栏隐藏
         setContentView(R.layout.activity_splash);
+        parser=new ResourceParser(0);
         Thread myThread = new Thread(){//创建子线程，五秒后跳转至主页面
             @Override
             public void run(){

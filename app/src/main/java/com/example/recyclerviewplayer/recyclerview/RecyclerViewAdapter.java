@@ -39,14 +39,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context context;
 
-    private List<JSONObject> mess;
+    private ResourceParser parser;
 
-    public RecyclerViewAdapter(Context context, int numListItems, ListItemClickListener listener, List<JSONObject> jsonList) {
+    public RecyclerViewAdapter(Context context, int numListItems, ListItemClickListener listener) {
         mNumberItems = numListItems;
         mOnClickListener = listener;
         viewHolderCount = 0;
         this.context = context;
-        this.mess = jsonList;
+        parser=new ResourceParser();
+        Log.d("h","h");
     }
 
     @NonNull
@@ -77,7 +78,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         numberViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){ //设置点击事件：点击封面图片跳转到播放页面
-//                Intent intent = new Intent(context,VideoviewMainActivity.class);
                 Intent intent=new Intent(context, ViewPagerActivity.class);
 
                 intent.putExtra("initPos",position);//传递第几个view的视频地址信息
@@ -109,17 +109,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
         public void bind(int position) throws JSONException {
-            author_text.setText("昵称:"+mess.get(position).getString("nickname"));
-            time_text.setText("描述"+mess.get(position).getString("description"));
+            author_text.setText("昵称:"+parser.getNickname(position));
+            time_text.setText("描述"+parser.getDescription(position));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            Log.d("LXX",mess.get(position).getString("feedurl"));
+            Log.d("LXX",parser.getFeedurl(position));
             Glide.with(imageView.getContext()) //使用Glide加载封面图
                     .setDefaultRequestOptions(
                           new RequestOptions()
                                   .frame(1000000)
                                   .centerCrop()
                     )
-                    .load(mess.get(position).getString("feedurl"))
+                    .load(parser.getFeedurl(position))
                     .into(imageView);
         }
 
