@@ -5,4 +5,4 @@
 视频播放展示：</br>
 ![pic1](/ScreenShot/ScreenShot1.gif)</br>
 录制视频展示：</br>
-![pic3](/ScreenShot/ScreenShot3.gif)
+![pic2](/ScreenShot/ScreenShot2.gif)
